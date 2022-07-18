@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { getRandomColor } from "./randomColorGenerator.js";
-import Child from "./Child";
+import Child from "./Child.js";
+ import { getRandomColor } from "./randomColorGenerator.js";
+// import Child from "./Child";
 
-function Parent() {
+function Parent(){
   const randomColor = getRandomColor();
   const [color, setColor] = useState(randomColor);
-  const [childrenColor, setChildrenColor] = useState("#FFF")
-  function handleChangeColor(newChildColor){
+  const [childColor,setChildrenColor] = useState("#FFF")
+  function handleChangeColor(newChildColor)
+  {
     const newRandomColor = getRandomColor()
-    setColor(newRandomColor)//updating of the state to a new color value
-    setChildrenColor(newChildColor)//updating of the state to a new color for the child components
+    setColor(newRandomColor)
+    setChildrenColor(newChildColor)
   }
   return (
-    <div className="parent" style={{ backgroundColor: color }}>
-      <Child color={childrenColor} onChangeColor={handleChangeColor}/>
-      <Child color={childrenColor} onChangeColor={handleChangeColor}/>
+    <div className="parent" style={{backgroundColor:color}}>
+      <Child color={childColor} onChangeColor={handleChangeColor}/>
+      <Child color={childColor} onChangeColor={handleChangeColor}/>
     </div>
-  );
+  )
 }
-
-export default Parent;
+export default Parent
